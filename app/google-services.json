@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "230192030616",
+    "project_id": "homescreens-68011",
+    "storage_bucket": "homescreens-68011.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230192030616:android:f480273d2b4586a35dc1ed",
+        "android_client_info": {
+          "package_name": "com.mwendwa.homescreens"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgyX2eiPCCyqj2sRq5HjpolneRM8QpPoc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
