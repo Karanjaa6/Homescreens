@@ -42,6 +42,7 @@ import androidx.navigation.compose.rememberNavController
 import com.mwendwa.homescreens.data.ProductViewModel
 import com.mwendwa.homescreens.navigation.ROUTE_HOME
 import com.mwendwa.homescreens.navigation.ROUTE_VIEW_PRODUCT
+import com.mwendwa.homescreens.navigation.ROUTE_VIEW_UPLOAD
 
 //import com.mwendwa.homescreens.navigation.ROUTE_VIEW_PRODUCT
 //import com.mwendwa.homescreens.navigation.ROUTE_VIEW_UPLOAD
@@ -112,65 +113,65 @@ fun AddProductsScreen(navController: NavHostController) {
 
         //---------------------IMAGE PICKER START-----------------------------------//
 
-      //  ImagePicker(Modifier,context, navController, productName.text.trim(), productQuantity.text.trim(), productPrice.text.trim())
+       ImagePicker(Modifier,context, navController, productName.text.trim(), productQuantity.text.trim(), productPrice.text.trim())
 
 
     }
 }
-//@Composable
-//fun ImagePicker(modifier: Modifier = Modifier, context: Context, navController: NavHostController, name:String, quantity:String, price:String) {
-//    var hasImage by remember { mutableStateOf(false) }
-//    var imageUri by remember { mutableStateOf<Uri?>(null) }
-//
-//    val imagePicker = rememberLauncherForActivityResult(
-//        contract = ActivityResultContracts.GetContent(),
-//        onResult = { uri ->
-//            hasImage = uri != null
-//            imageUri = uri
-//        }
-//    )
-//
-//    Column(modifier = modifier,) {
-//        if (hasImage && imageUri != null) {
-//            val bitmap = MediaStore.Images.Media.
-//            getBitmap(context.contentResolver,imageUri)
-//            Image(bitmap = bitmap.asImageBitmap(), contentDescription = "Selected image")
-//        }
-//        Column(
-//            modifier = Modifier.fillMaxWidth().padding(bottom = 32.dp), horizontalAlignment = Alignment.CenterHorizontally,) {
-//            Button(
-//                onClick = {
-//                    imagePicker.launch("image/*")
-//                },
-//            ) {
-//                Text(
-//                    text = "Select Image"
-//                )
-//            }
-//
-//            Spacer(modifier = Modifier.height(20.dp))
-//
-//            Button(onClick = {
-//                //-----------WRITE THE UPLOAD LOGIC HERE---------------//
-//                var productRepository = ProductViewModel(navController,context)
-//                productRepository.saveProductWithImage(name, quantity, price,imageUri!!)
-//                //navController.navigate(ROUTE_VIEW_UPLOAD)
-//
-//            }) {
-//                Text(text = "Upload")
-//            }
-//            Button(onClick = {
-//                //-----------WRITE THE UPLOAD LOGIC HERE---------------//
-//
-//               // navController.navigate(ROUTE_VIEW_UPLOAD)
-//
-//            }) {
-//                Text(text = "view uploads")
-//            }
-//
-//        }
-//    }
-//}
+@Composable
+fun ImagePicker(modifier: Modifier = Modifier, context: Context, navController: NavHostController, name:String, quantity:String, price:String) {
+    var hasImage by remember { mutableStateOf(false) }
+    var imageUri by remember { mutableStateOf<Uri?>(null) }
+
+    val imagePicker = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent(),
+        onResult = { uri ->
+            hasImage = uri != null
+            imageUri = uri
+        }
+    )
+
+    Column(modifier = modifier,) {
+        if (hasImage && imageUri != null) {
+            val bitmap = MediaStore.Images.Media.
+            getBitmap(context.contentResolver,imageUri)
+            Image(bitmap = bitmap.asImageBitmap(), contentDescription = "Selected image")
+        }
+        Column(
+            modifier = Modifier.fillMaxWidth().padding(bottom = 32.dp), horizontalAlignment = Alignment.CenterHorizontally,) {
+            Button(
+                onClick = {
+                    imagePicker.launch("image/*")
+                },
+            ) {
+                Text(
+                    text = "Select Image"
+                )
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Button(onClick = {
+                //-----------WRITE THE UPLOAD LOGIC HERE---------------//
+                var productRepository = ProductViewModel(navController,context)
+                productRepository.saveProductWithImage(name, quantity, price,imageUri!!)
+                navController.navigate(ROUTE_VIEW_UPLOAD)
+
+            }) {
+                Text(text = "Upload")
+            }
+            Button(onClick = {
+                //-----------WRITE THE UPLOAD LOGIC HERE---------------//
+
+                navController.navigate(ROUTE_VIEW_UPLOAD)
+
+            }) {
+                Text(text = "view uploads")
+            }
+
+        }
+    }
+}
 @Preview
 @Composable
 fun AddProductsScreenPreview() {

@@ -18,6 +18,7 @@ import com.mwendwa.homescreens.ui.theme.Screens.Register.RegisterScreen
 import com.mwendwa.homescreens.ui.theme.Screens.products.AddProductsScreen
 import com.mwendwa.homescreens.ui.theme.Screens.products.UpdateProductsScreen
 import com.mwendwa.homescreens.ui.theme.Screens.products.ViewProductsScreen
+import com.mwendwa.homescreens.ui.theme.Screens.products.ViewUploadsScreen
 
 @Composable
 fun AppNavHost(modifier: Modifier=Modifier,
@@ -35,6 +36,7 @@ fun AppNavHost(modifier: Modifier=Modifier,
                        composable(ROUTE_PROFILE){ ProfileScreen(navController)}
                        composable(ROUTE_ADD_PRODUCT){ AddProductsScreen(navController)}
                        composable(ROUTE_VIEW_PRODUCT){ ViewProductsScreen(navController)}
+                       composable(ROUTE_VIEW_UPLOAD){ ViewUploadsScreen(navController)}
                        composable(ROUTE_UPDATE_PRODUCT+"/{id}"){
                            passedData ->
                            UpdateProductsScreen(
